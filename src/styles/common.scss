@@ -1,0 +1,126 @@
+@import "css-reset-and-normalize/scss/reset-and-normalize";
+@import "bootstrap/scss/_functions";
+@import "bootstrap/scss/_variables.scss";
+@import "bootstrap/scss/_mixins.scss";
+@import "bootstrap/scss/_grid.scss";
+@import "_variables";
+@import "_mixins";
+@import "animations";
+
+%main {
+	height: 100%;
+	color: $text;
+  font-size: 30px;
+}
+
+%font_family {
+  font-family: 'Open Sans', sans-serif;
+}
+
+html {
+  @extend %main;
+  @extend %font_family;
+}
+body {
+  @extend %main;
+	@extend %font_family;
+  font-size: 14px;
+}
+button {
+  @extend %font_family;
+  font-size: 20px;
+}
+.wrapper {
+	margin: 20px auto;
+}
+h1, h2 {
+	margin: 20px 0;
+	font-size: $fieldFontSizeLg;
+}
+
+p {
+	color: $text;
+}
+
+.flex {
+	@include flex;
+
+	&--fill-height {
+		height: 100%;
+	}
+}
+
+.align {
+	&--v {
+		&-center {
+			align-items: center;
+		}
+	}
+	&--h {
+		&-center {
+			justify-content: center;
+		}
+	}
+}
+
+a {
+	color: $text;
+  text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+$aligns: center, left, right, justify;
+
+.text {
+  @each $item in $aligns {
+    &-#{$item} {
+      text-align: $item;
+    }
+  }
+}
+
+$indents: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70;
+.m {
+  @each $item in $indents {
+    &t-#{$item} {
+      margin-top: $item + px;
+    }
+    &b-#{$item} {
+      margin-bottom: $item + px;
+    }
+    &l-#{$item} {
+      margin-left: $item + px;
+    }
+    &r-#{$item} {
+      margin-right: $item + px;
+    }
+    &v-#{$item} {
+      margin-top: $item + px;
+      margin-bottom: $item + px;
+    }
+  }
+}
+
+.p {
+  @each $item in $indents {
+    &t-#{$item} {
+      padding-top: $item + px;
+    }
+    &b-#{$item} {
+      padding-bottom: $item + px;
+    }
+    &l-#{$item} {
+      padding-left: $item + px;
+    }
+    &r-#{$item} {
+      padding-right: $item + px;
+    }
+    &v-#{$item} {
+      padding-top: $item + px;
+      padding-bottom: $item + px;
+    }
+  }
+}

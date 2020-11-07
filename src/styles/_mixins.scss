@@ -1,0 +1,16 @@
+@mixin flex ($h: null, $v: null) {
+  display: flex;
+  @if($h) { justify-content: $h; }
+  @if($v) { align-items: $v; }
+}
+
+@mixin size ($w: null, $h: null) {
+  @if($w) { width: $w; }
+  @if($h) { height: $h; }
+  @else if($w) { height: $w }
+}
+
+@mixin disabled ($opacity: .5) {
+  opacity: $opacity;
+  pointer-events: none;
+}

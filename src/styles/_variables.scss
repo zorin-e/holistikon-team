@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+//colors
+$pink: #FF2D55;
+$skyBlue: #4EB4F9;
+$text: #000000;
+$gray: #2D2D2D;
+$lightGray: #EFEFF4;
+
+//another vars
+$radiusXs: 8px;
+$radiusLg: 24px;
+
+// font-size
+$fieldFontSizeLg: 24px;
+$fieldFontSizeMd: 16px;
+$fieldFontSizeSm: 14px;
