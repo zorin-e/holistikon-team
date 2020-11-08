@@ -1,20 +1,26 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/">Kompetenzen</router-link>
-      <router-link to="/">Team</router-link>
-      <router-link to="/">Events</router-link>
-      <router-link to="/">Karriere</router-link>
-      <router-link to="/">Blog</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <main>
+    <base-header>
+      <container>
+        <base-menu />
+      </container>
+    </base-header>
+    <router-view />
+  </main>
 </template>
 
 <script>
 import "@/styles/common.scss";
-export default {
+import Container from "@/components/Container"
+import BaseHeader from "@/components/BaseHeader"
+import BaseMenu from "@/components/BaseMenu"
 
+export default {
+  name: "App",
+  components: {
+    Container,
+    BaseHeader,
+    BaseMenu
+  }
 }
 </script>
