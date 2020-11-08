@@ -16,3 +16,11 @@
   opacity: $opacity;
   pointer-events: none;
 }
+
+@mixin title {
+  font-size: 38px;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 56px;
+  }
+}
