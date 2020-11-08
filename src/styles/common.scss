@@ -10,7 +10,6 @@
 %main {
 	height: 100%;
 	color: $text;
-  font-size: 30px;
 }
 
 %font_family {
@@ -24,18 +23,16 @@ html {
 body {
   @extend %main;
 	@extend %font_family;
-  font-size: 14px;
+  font-size: $fieldFontSizeSm;
 }
 button {
   @extend %font_family;
-  font-size: 20px;
 }
 .wrapper {
 	margin: 20px auto;
 }
 h1, h2 {
-	margin: 20px 0;
-	font-size: $fieldFontSizeLg;
+	margin: 0;
 }
 
 p {
