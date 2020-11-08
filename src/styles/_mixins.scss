@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/_mixins";
+
 @mixin flex ($h: null, $v: null) {
   display: flex;
   @if($h) { justify-content: $h; }
