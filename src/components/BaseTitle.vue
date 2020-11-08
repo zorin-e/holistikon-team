@@ -2,13 +2,21 @@
   <h2
     :class="[$style.h2, center && $style.center]"
   >
-    <slot />
+    <span :class="$style.wrapper">
+      <slot />
+      <title-line :class="$style.line" />
+    </span>
   </h2>
 </template>
 
 <script>
+import TitleLine from "@/components/TitleLine"
+
 export default {
   name: "BaseTitle",
+  components: {
+    TitleLine
+  },
   props: {
     center: Boolean
   }
@@ -24,5 +32,15 @@ export default {
 
 .center {
   text-align: center;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  bottom: -15px;
 }
 </style>
