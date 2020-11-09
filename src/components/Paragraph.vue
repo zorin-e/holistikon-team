@@ -14,7 +14,6 @@ export default {
 <style lang="scss" module>
 .p {
   font-size: $fieldFontSizeSm;
-  margin: 0 10px;
   line-height: 1.8;
 }
 

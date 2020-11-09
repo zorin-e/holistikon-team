@@ -1,6 +1,5 @@
 <template>
   <nav :class="$style.navbar">
-    <logo class="mb-10" />
     <div :class="$style.wrapper">
       <base-menu
         :items="menu"
@@ -16,14 +15,12 @@
 </template>
 
 <script>
-import Logo from "@/assets/logo.svg"
 import BaseSelect from "@/components/BaseSelect"
 import BaseMenu from "@/components/BaseMenu"
 
 export default {
   name: "Navbar",
   components: {
-    Logo,
     BaseSelect,
     BaseMenu
   },

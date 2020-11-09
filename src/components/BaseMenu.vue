@@ -38,7 +38,7 @@ export default {
 }
 
 .link {
-  padding: 0 20px;
+  padding: 0 30px;
   color: #fff;
   display: block;
   height: 100%;
@@ -58,6 +58,6 @@ export default {
 
 .active {
   cursor: default;
-  border-top: solid 5px $pink;
+  border-top: solid 8px $pink;
 }
 </style>
