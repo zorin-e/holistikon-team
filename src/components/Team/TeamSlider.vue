@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div :class="$style.wrapper">
       <button :class="[$style.button, $style.buttonLeft]" @click="prev">
         <arrow-left />
@@ -12,7 +11,7 @@
             class="swiper-slide"
             :key="member.id"
             v-for="member in team"
-            @click="showMember"
+            @click="showMember(member.id)"
           >
             <img :class="$style.img" :src="member.img">
             <div :class="$style.name">{{ member.name }}</div>
@@ -23,7 +22,6 @@
         <arrow-right />
       </button>
     </div>
-
     <divider />
   </div>
 </template>
@@ -55,7 +53,8 @@ export default {
       swiperOption: {
         slidesPerView,
         lazy: true
-      }
+      },
+      isTeamMember: false
     }
   },
   methods: {
@@ -65,8 +64,9 @@ export default {
     prev() {
       this.teamSlider.slidePrev()
     },
-    showMember() {
-      console.log('jj');
+    showMember(id) {
+      this.$emit('show-member', id)
+      // this.isTeamMember = true
     }
   },
   directives: {
@@ -131,6 +131,7 @@ export default {
 
 .member {
   position: relative;
+  cursor: pointer;
 }
 
 .name {
