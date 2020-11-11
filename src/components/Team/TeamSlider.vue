@@ -53,8 +53,7 @@ export default {
       swiperOption: {
         slidesPerView,
         lazy: true
-      },
-      isTeamMember: false
+      }
     }
   },
   methods: {
@@ -66,7 +65,6 @@ export default {
     },
     showMember(id) {
       this.$emit('show-member', id)
-      // this.isTeamMember = true
     }
   },
   directives: {

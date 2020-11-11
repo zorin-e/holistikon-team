@@ -8,7 +8,7 @@
         <div>
           <navbar />
           <div :class="[$style.flex, $style.text]" class="ml-25">
-            <droplet italic class="mt-10">we are</droplet>
+            <droplet italic full-responsive class="mt-10">we are</droplet>
             <base-top-title class="ml-20">PROFESSIONALS<br>INDIVIDUALS<br>N3RDS</base-top-title>
           </div>
         </div>
