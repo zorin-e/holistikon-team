@@ -1,12 +1,21 @@
 <template>
-  <p :class="[$style.p, center && $style.center]"><slot /></p>
+  <p
+    :class="[
+      $style.p,
+      center && $style.center,
+      uppercase && $style.uppercase,
+      bold && $style.bold
+    ]"
+  ><slot /></p>
 </template>
 
 <script>
 export default {
   name: "Paragraph",
   props: {
-    center: Boolean
+    center: Boolean,
+    uppercase: Boolean,
+    bold: Boolean
   }
 }
 </script>
@@ -19,5 +28,13 @@ export default {
 
 .center {
   text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: bold;
 }
 </style>
