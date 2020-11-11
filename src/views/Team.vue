@@ -4,7 +4,12 @@
     <paragraph center>
       Holistkönnerinnen und -könner sind keine gleichgeschalteten Roboter mit einer Musterlösung für jedes Problem. Es gibt keine Workshops in denen man lernt, wie bei Holisticon gearbeitet wird. Jede und jeder ist individuell und das ist auch gut so. Trotzdem verfolgen wir die gleichen Ziele: hochwertige Software, erfolgreiche Projekte, konstruktives Streiten, kreatives Chaos und Selbstorganisation.
     </paragraph>
-    <team-list class="mt-50 mb-30" />
+    <team-list class="mt-50" :class="$style.teamListIndent" />
+    <base-title class="mb-50" center>Who we are</base-title>
+    <paragraph center :class="$style.paragraphIndent">
+      Holistkönnerinnen und -könner sind keine gleichgeschalteten Roboter mit einer Musterlösung für jedes Problem. Es gibt keine Workshops in denen man lernt, wie bei Holisticon gearbeitet wird. Jede und jeder ist individuell und das ist auch gut so. Trotzdem verfolgen wir die gleichen Ziele: hochwertige Software, erfolgreiche Projekte, konstruktives Streiten, kreatives Chaos und Selbstorganisation.
+    </paragraph>
+    <team-facts-list />
   </container>
 </template>
 
@@ -13,6 +18,7 @@ import Container from "@/components/Container"
 import BaseTitle from "@/components/BaseTitle"
 import Paragraph from "@/components/Paragraph"
 import TeamList from "@/components/Team/TeamList"
+import TeamFactsList from "@/components/Team/WhoWeAre/TeamFactsList"
 
 export default {
   name: "Team",
@@ -20,7 +26,26 @@ export default {
     Container,
     BaseTitle,
     Paragraph,
-    TeamList
+    TeamList,
+    TeamFactsList
   }
 }
 </script>
+
+<style lang="scss" module>
+.teamListIndent {
+  margin-bottom: 140px;
+
+  @include media-breakpoint-down(xs) {
+    margin-bottom: 50px;
+  }
+}
+
+.paragraphIndent {
+  margin: 100px 0;
+
+  @include media-breakpoint-down(xs) {
+    margin: 50px 0;
+  }
+}
+</style>
