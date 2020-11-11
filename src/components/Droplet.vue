@@ -3,13 +3,15 @@
     :class="[
       $style.droplet,
       italic && $style.italic,
-      $style['droplet-' + size]
+      $style['droplet-' + size],
+      fullResponsive && $style['dropletFullResponsive'],
+      partResponsive && $style['dropletPartResponsive']
     ]"
     :style="{
       fontSize: fontSize
     }"
   >
-    <slot />
+    <div :class="$style.wrapper"><slot /></div>
   </div>
 </template>
 
@@ -26,7 +28,9 @@ export default {
       type: String,
       default: "lg",
       validator: value => ['lg', 'md', 'sm'].includes(value)
-    }
+    },
+    fullResponsive: Boolean,
+    partResponsive: Boolean
   }
 }
 </script>
@@ -91,15 +95,28 @@ export default {
     @include md;
   }
 
-  @include media-breakpoint-down(md) {
-    @include md;
+  &PartResponsive {
+    @include media-breakpoint-down(md) {
+      @include md;
+    }
   }
-  @include media-breakpoint-down(sm) {
-    @include sm;
+
+  &FullResponsive {
+    @include media-breakpoint-down(md) {
+      @include md;
+    }
+    @include media-breakpoint-down(sm) {
+      @include sm;
+    }
   }
 }
 
 .italic {
   font-style: italic;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
 }
 </style>
