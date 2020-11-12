@@ -12,6 +12,7 @@
     "bootstrap": "^4.5.3",
     "core-js": "^3.6.5",
     "css-reset-and-normalize": "^2.1.0",
+    "gsap": "^3.5.1",
     "swiper": "^6.3.5",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
