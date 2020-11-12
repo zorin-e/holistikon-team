@@ -29,6 +29,15 @@
         v-for="(fact, index) in facts"
       ></div>
     </div>
+    <div ref="photos" :class="$style.bg">
+      <img
+        :class="$style.photo"
+        :src="photo.paths[photosPathIndex]"
+        v-for="photo in photos"
+        :key="photo.id"
+        :style="photo.coords"
+      >
+    </div>
   </div>
 </template>
 
@@ -39,6 +48,50 @@ import ArrowLeft from "@/assets/icons/arrow-left.svg"
 import ArrowRight from "@/assets/icons/arrow-right.svg"
 import Droplet from "@/components/Droplet"
 import Paragraph from "@/components/Paragraph"
+import { TimelineLite, TweenLite, Back, Sine, Elastic } from 'gsap'
+
+const randomX = random(10, 20);
+const randomY = random(20, 30);
+const randomDelay = random(0, 1);
+const randomTime = random(3, 5);
+const randomTime2 = random(5, 10);
+const randomAngle = random(8, 12);
+
+function rotate(target, direction) {
+
+  TweenLite.to(target, randomTime2(), {
+    rotation: randomAngle(direction),
+    // delay: randomDelay(),
+    ease: Sine.easeInOut,
+    onComplete: rotate,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function moveX(target, direction) {
+  TweenLite.to(target, randomTime(), {
+    x: randomX(direction),
+    ease: Sine.easeInOut,
+    onComplete: moveX,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function moveY(target, direction) {
+
+  TweenLite.to(target, randomTime(), {
+    y: randomY(direction),
+    ease: Sine.easeInOut,
+    onComplete: moveY,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function random(min, max) {
+  const delta = max - min;
+  return (direction = 1) => (min + delta * Math.random()) * direction;
+}
+
 
 export default {
   name: "TeamFactsSlider",
@@ -52,10 +105,17 @@ export default {
     facts: {
       type: Array,
       default: () => ([])
+    },
+    photos: {
+      type: Array,
+      default: () => ([])
     }
   },
   data () {
     return {
+      photosWrapper: null,
+      timeline: null,
+      photosPathIndex: 0,
       activeBulletIndex: 0,
       swiperOption: {
         slidesPerView: 1,
@@ -69,20 +129,58 @@ export default {
     },
     prev() {
       this.teamSlider.slidePrev()
+    },
+    slideChangeHandler: function(swiper) {
+      this.timeline.clear()
+      this.activeBulletIndex = swiper.activeIndex
+      this.timeline.to(this.photosWrapper, 0.4, {
+        scale: 0.9,
+        rotation: 12,
+        ease: Back.easeOut.config(1.7)
+      });
+      this.photosPathIndex = swiper.activeIndex
+      this.timeline.to(this.photosWrapper, 1.2, {
+        scale: 1,
+        rotation: "-=12",
+        ease: Elastic.easeOut.config(2.5, 0.5)
+      });
     }
   },
   directives: {
     swiper: directive
   },
   mounted() {
-    this.teamSlider.on('slideChange', swiper => {
-      this.activeBulletIndex = swiper.activeIndex
+    this.photosWrapper = this.$refs.photos
+    this.timeline = new TimelineLite()
+
+    TweenLite.set(this.photosWrapper.children, {
+      x: randomX(-1),
+      y: randomX(1),
+      rotation: randomAngle(-1)
+    });
+
+    const randomImgMove = random(-2, 2)
+
+    this.photosWrapper.children.forEach(item  => {
+      moveX(item, randomImgMove());
+      moveY(item, randomImgMove());
+      rotate(item, randomImgMove());
     })
+
+    this.teamSlider.on('slideChange', this.slideChangeHandler)
+  },
+  beforeDestroy() {
+    this.teamSlider.off('slideChange', this.slideChangeHandler)
   }
 }
 </script>
 
 <style lang="scss" module>
+.photo {
+  position: absolute;
+  max-width: 15%;
+}
+
 .button {
   @include size(36px);
   border: 0;
@@ -118,6 +216,7 @@ export default {
   @include flex;
   position: relative;
   width: 222px;
+  margin: 0 auto;
 
   @include media-breakpoint-down(md) {
     width: 160px;
@@ -154,5 +253,12 @@ export default {
   &Active {
     background: $pink;
   }
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include size(100%);
 }
 </style>
