@@ -1,5 +1,5 @@
 <template>
-  <div style="overflow: hidden;">
+  <div :class="$style.wrapper">
     <container>
       <base-title class="mt-50 mb-50" center>Meet the Team</base-title>
       <paragraph center>
@@ -12,14 +12,19 @@
       </paragraph>
     </container>
     <team-facts-list />
-    <base-title center is-not-line class="mb-50">We are different. <br>and this unites us</base-title>
-    <we-are-different />
-    <block>
-      <container>
-        <base-title center is-not-line class="mb-50">Join us! </base-title>
-        <join-us-form />
-      </container>
-    </block>
+    <div :class="$style.hideOnSm">
+      <base-title center is-not-line class="mb-50">We are different. <br>and this unites us</base-title>
+      <we-are-different />
+      <block>
+        <container>
+          <base-title center is-not-line class="mb-50">Join us! </base-title>
+          <join-us-form />
+        </container>
+      </block>
+      <block no-indents>
+        <gallery />
+      </block>
+    </div>
   </div>
 </template>
 
@@ -32,6 +37,7 @@ import TeamFactsList from "@/components/Team/WhoWeAre/TeamFactsList"
 import WeAreDifferent from "@/components/Team/WeAreDifferent"
 import JoinUsForm from "@/components/Team/JoinUs/JoinUsForm"
 import Block from "@/components/Block"
+import Gallery from "@/components/Team/Gallery"
 
 export default {
   name: "Team",
@@ -43,7 +49,8 @@ export default {
     TeamFactsList,
     WeAreDifferent,
     JoinUsForm,
-    Block
+    Block,
+    Gallery
   }
 }
 </script>
@@ -61,9 +68,19 @@ export default {
   margin-top: 100px;
   margin-bottom: 200px;
 
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(md) {
     margin-top: 50px;
     margin-bottom: 100px;
+  }
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.hideOnSm {
+  @include media-breakpoint-down(md) {
+    display: none;
   }
 }
 </style>
