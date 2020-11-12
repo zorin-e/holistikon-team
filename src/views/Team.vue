@@ -14,6 +14,12 @@
     <team-facts-list />
     <base-title center is-not-line class="mb-50">We are different. <br>and this unites us</base-title>
     <we-are-different />
+    <block>
+      <container>
+        <base-title center is-not-line class="mb-50">Join us! </base-title>
+        <join-us-form />
+      </container>
+    </block>
   </div>
 </template>
 
@@ -24,6 +30,8 @@ import Paragraph from "@/components/Paragraph"
 import TeamList from "@/components/Team/TeamList"
 import TeamFactsList from "@/components/Team/WhoWeAre/TeamFactsList"
 import WeAreDifferent from "@/components/Team/WeAreDifferent"
+import JoinUsForm from "@/components/Team/JoinUs/JoinUsForm"
+import Block from "@/components/Block"
 
 export default {
   name: "Team",
@@ -33,7 +41,9 @@ export default {
     Paragraph,
     TeamList,
     TeamFactsList,
-    WeAreDifferent
+    WeAreDifferent,
+    JoinUsForm,
+    Block
   }
 }
 </script>
