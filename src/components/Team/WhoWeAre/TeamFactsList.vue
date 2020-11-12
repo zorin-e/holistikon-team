@@ -1,18 +1,28 @@
 <template>
+<div :class="$style.wrapper">
   <div :class="$style.facts">
     <team-facts-slider
       :facts="factsList"
       :photos="photos"
     />
   </div>
+  <wrapper center>
+    <slider-button />
+  </wrapper>
+  </div>
 </template>
 
 <script>
 import TeamFactsSlider from "./TeamFactsSlider"
+import SliderButton from "./SliderButton"
+import Wrapper from "@/components/Wrapper"
+
 export default {
   name: "TeamFactsList",
   components: {
-    TeamFactsSlider
+    TeamFactsSlider,
+    SliderButton,
+    Wrapper
   },
   data() {
     return {
@@ -160,5 +170,17 @@ export default {
   @include flex(center);
   position: relative;
   margin-bottom: 300px;
+
+  @include media-breakpoint-down(xs) {
+    margin-bottom: 200px;
+  }
+}
+
+.wrapper {
+  margin-bottom: 200px;
+
+  @include media-breakpoint-down(xs) {
+    margin-bottom: 80px;
+  }
 }
 </style>
