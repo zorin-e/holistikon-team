@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="overflow: hidden;">
     <container>
       <base-title class="mt-50 mb-50" center>Meet the Team</base-title>
       <paragraph center>
@@ -12,6 +12,8 @@
       </paragraph>
     </container>
     <team-facts-list />
+    <base-title center is-not-line class="mb-50">We are different. <br>and this unites us</base-title>
+    <we-are-different />
   </div>
 </template>
 
@@ -21,6 +23,7 @@ import BaseTitle from "@/components/BaseTitle"
 import Paragraph from "@/components/Paragraph"
 import TeamList from "@/components/Team/TeamList"
 import TeamFactsList from "@/components/Team/WhoWeAre/TeamFactsList"
+import WeAreDifferent from "@/components/Team/WeAreDifferent"
 
 export default {
   name: "Team",
@@ -29,7 +32,8 @@ export default {
     BaseTitle,
     Paragraph,
     TeamList,
-    TeamFactsList
+    TeamFactsList,
+    WeAreDifferent
   }
 }
 </script>
