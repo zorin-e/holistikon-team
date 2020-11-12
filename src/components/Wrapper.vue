@@ -13,8 +13,8 @@ export default {
 }
 </script>
 
-<style module>
+<style lang="scss" module>
 .center {
-  text-align: center;
+  @include flex(center)
 }
 </style>
