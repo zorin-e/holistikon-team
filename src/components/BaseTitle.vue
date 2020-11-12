@@ -4,7 +4,7 @@
   >
     <span :class="$style.wrapper">
       <slot />
-      <title-line :class="$style.line" />
+      <title-line v-if="!isNotLine" :class="$style.line" />
     </span>
   </h2>
 </template>
@@ -18,7 +18,8 @@ export default {
     TitleLine
   },
   props: {
-    center: Boolean
+    center: Boolean,
+    isNotLine: Boolean
   }
 }
 </script>
