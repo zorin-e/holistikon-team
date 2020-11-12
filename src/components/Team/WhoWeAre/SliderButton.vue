@@ -1,5 +1,4 @@
 <template>
-<div>
   <button type="button" :class="$style.button">
     <span ref="circle" :class="$style.circle">
       <arrow-right :class="$style.arrow" />
@@ -7,7 +6,6 @@
     Komm`ins team
     <div ref="bubble" :class="$style.bubble"></div>
   </button>
-</div>
 </template>
 
 <script>
