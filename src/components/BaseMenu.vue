@@ -29,12 +29,24 @@ export default {
 .menu {
   height: 100%;
   @include flex(space-between);
+
+  @include media-breakpoint-down(sm) {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    top: 60px;
+  }
 }
 
 .item {
   text-transform: uppercase;
   font-size: $fieldFontSizeXs;
   font-weight: bold;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 20px;
+  }
 }
 
 .link {
@@ -45,14 +57,26 @@ export default {
   @include flex(null, flex-end);
   padding-bottom: 15px;
 
+  @include media-breakpoint-down(md) {
+    padding: 0 24px;
+  }
+
   &:hover {
     transition: .2s color ease-in, .2s border linear;
     text-decoration: none;
 
-    &:not(.active) {
-      color: $pink;
-      border-bottom: solid 5px $lightGray;
+    @include media-breakpoint-up(md) {
+      &:not(.active) {
+        color: $pink;
+        border-bottom: solid 5px $lightGray;
+      }
     }
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 30px;
+    text-align: center;
+    display: block;
   }
 }
 

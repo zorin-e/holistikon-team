@@ -64,7 +64,13 @@ export default {
           id: 1,
           img: require('@/assets/team/photo_1.jpg'),
           name: "Thomas",
-          groupId: [1, 2]
+          groupId: [1, 2],
+          text: `
+            <p>
+              Respekt in der Zusammenarbeit treiben mich an.
+            </p>
+            <p class="mt-30">Bin ich begeisterte WOLerin (Working Out Loud) und singe gern, egal ob im Chor oder beim Karaoke.</p>
+          `
         },
         2: {
           id: 2,
@@ -82,25 +88,49 @@ export default {
           id: 3,
           img: require('@/assets/team/photo_3.jpg'),
           name: "John",
-          groupId: [1, 3]
+          groupId: [1, 3],
+          text: `
+            <p>
+              Transparente Kommunikation, wertschöpfende Arbeit und vor allem Respekt in der Zusammenarbeit treiben mich an.
+            </p>
+            <p class="mt-30">Bin ich begeisterte WOLerin (Working Out Loud) und singe gern, egal ob im Chor oder beim Karaoke.</p>
+          `
         },
         4: {
           id: 4,
           img: require('@/assets/team/photo_4.jpg'),
           name: "Alphared",
-          groupId: [1, 2]
+          groupId: [1, 2],
+          text: `
+            <p>
+              Respekt in der Zusammenarbeit treiben mich an.
+            </p>
+            <p class="mt-30">Bin ich begeisterte WOLerin (Working Out Loud) und singe gern, egal ob im Chor oder beim Karaoke.</p>
+          `
         },
         5: {
           id: 5,
           img: require('@/assets/team/photo_5.jpg'),
           name: "Alex",
-          groupId: [1, 2]
+          groupId: [1, 2],
+          text: `
+            <p>
+               Kommunikation, wertschöpfende Arbeit und vor allem Respekt in der Zusammenarbeit treiben mich an.
+            </p>
+            <p class="mt-30">Bin ich begeisterte WOLerin (Working Out Loud) und singe gern, egal ob im Chor oder beim Karaoke.</p>
+          `
         },
         6: {
           id: 6,
           img: require('@/assets/team/photo_6.jpg'),
           name: "Sam",
-          groupId: [1, 2, 3, 4]
+          groupId: [1, 2, 3, 4],
+          text: `
+            <p>
+              Transparente Kommunikation, wertschöpfende Arbeit und vor allem Respekt in der Zusammenarbeit treiben mich an.
+            </p>
+            <p class="mt-30">Bin ich begeisterte WOLerin (Working Out Loud) und singe gern, egal ob im Chor oder beim Karaoke.</p>
+          `
         }
       }
     }

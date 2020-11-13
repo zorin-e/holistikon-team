@@ -3,7 +3,7 @@
     <base-header>
       <container :class="$style.wrapper">
         <div :class="$style.logoWrapper">
-          <logo class="mb-10" />
+          <logo :class="$style.logo" class="mb-10" />
         </div>
         <div>
           <navbar />
@@ -57,5 +57,17 @@ export default {
 .text {
   transform: translateY(50%);
   margin-top: -5%;
+
+  @include media-breakpoint-down(xs) {
+    margin-left: 10px;
+  }
+}
+
+.logo {
+  @include media-breakpoint-down(sm) {
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+  }
 }
 </style>

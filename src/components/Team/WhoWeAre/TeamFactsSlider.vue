@@ -179,6 +179,18 @@ export default {
 .photo {
   position: absolute;
   max-width: 15%;
+
+  @include media-breakpoint-down(sm) {
+    max-width: 30%;
+
+    &:nth-child(5),
+    &:nth-child(3),
+    &:nth-child(6),
+    &:nth-child(4),
+    &:nth-child(8) {
+      display: none;
+    }
+  }
 }
 
 .button {

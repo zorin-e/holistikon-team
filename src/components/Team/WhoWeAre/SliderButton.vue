@@ -84,6 +84,7 @@ export default {
   font-weight: bold;
   text-align: center;
   transition: .3s background ease-in;
+  margin: 0 15px;
 
   @include media-breakpoint-down(xs) {
     height: 65px;

@@ -4,7 +4,7 @@
       <button :class="[$style.button, $style.buttonLeft]" @click="prev">
         <arrow-left />
       </button>
-      <div v-swiper:teamSlider="swiperOption">
+      <div :class="$style.slider" v-swiper:teamSlider="swiperOption">
         <div class="swiper-wrapper">
           <div
             :class="$style.member"
@@ -15,6 +15,8 @@
           >
             <img :class="$style.img" :src="member.img">
             <div :class="$style.name">{{ member.name }}</div>
+            <divider />
+            <div :class="$style.textOnMobile" v-html="member.text"></div>
           </div>
         </div>
       </div>
@@ -22,7 +24,6 @@
         <arrow-right />
       </button>
     </div>
-    <divider />
   </div>
 </template>
 
@@ -52,7 +53,15 @@ export default {
     return {
       swiperOption: {
         slidesPerView,
-        lazy: true
+        lazy: true,
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+          },
+          480: {
+            slidesPerView
+          },
+        }
       }
     }
   },
@@ -79,7 +88,7 @@ export default {
   },
   watch: {
     team() {
-      this.teamSlider.params.slidesPerView = this.slidesPerView
+      if (this.teamSlider.currentBreakpoint >= 480) this.teamSlider.params.slidesPerView = this.slidesPerView
       this.teamSlider.slideTo(0, 100)
     }
   }
@@ -96,6 +105,10 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
 
   &:focus, &:hover {
     outline: none;
@@ -116,6 +129,10 @@ export default {
   &Right {
     right: -50px;
   }
+}
+
+.slider {
+  max-width: 80%;
 }
 
 .wrapper {
@@ -139,6 +156,19 @@ export default {
   position: absolute;
   text-align: center;
   width: 100%;
-  bottom: 20px;
+  bottom: 30px;
+
+  @include media-breakpoint-down(sm) {
+    position: relative;
+  }
+}
+
+.textOnMobile {
+  line-height: 1.6;
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    display: none;
+  }
 }
 </style>
